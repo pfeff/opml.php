@@ -15,6 +15,7 @@ class OPML
     {
         $this->writer->startDocument('1.0', 'UTF-8');
         $this->writer->startElement('opml');
+        $this->writer->writeAttribute('version', '2.0');
         
         // Header
         $this->writer->startElement('head');
@@ -29,7 +30,7 @@ class OPML
         foreach ($this->data['body'] as $outlines) {
             $this->writer->startElement('outline');
             foreach ($outlines as $key => $value) {
-                $this->writer->writeElement($key, $value);
+                $this->writer->writeAttribute($key, $value);
             }
             $this->writer->endElement();
         }
